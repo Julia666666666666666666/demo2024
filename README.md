@@ -49,6 +49,33 @@
 
 7-Проверяем адреса с помощью команды: ip a.
 
+## Настройка NAT
+
+На ISP прописываем команды: apt install iptables
+
+После заходим в конф.файл: nano /etc/sysctl.conf
+
+После пишем: #net.ipv4.ip_forward=1
+
+Проверяем: sysctl -p
+
+Далее пишем команду: ip tables -A POSTROUTING -t nat MASQUER
+
+После создаем файл для автоматического запуска после перезагрузки: nano /etc/network/if-pre-up.d/nat
+
+В файл пишем:
+
+#!/bin/sh
+
+/sbin/iptables -A POSTROUTING -t nat -j
+
+.
+
+В конце задаем права для файла: chmod +x /etc/network/if-pre-up.d/nat
+
+Повторяем все действия на BR-R & HQ-R
+
+
 
 
 
