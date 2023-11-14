@@ -97,9 +97,9 @@ MASQUERADE
 ```
 Задаем права для файла:
 ```
-chmod +x /etc/network/if-pre
-
-
+chmod +x /etc/network/if-pre-up.d/nat
+```
+Повторяем эту работу на BR-R & HQ-R
 
 ## Задание 1.2
 
