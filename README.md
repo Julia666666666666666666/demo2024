@@ -63,6 +63,44 @@ systemctl restart networking;
 ```
 ip a.
 ```
+### Настройка NAT
+
+На устройстве  ISP:
+```
+apt install ip iptables
+```
+Далее заходим в конф.файл:
+```
+nano /etc/sysctl.conf
+```
+После убираем # из строки:
+```
+#net.ipv4.ip_forward=1
+```
+Проверяем командой:
+```
+sysctl -p
+```
+Далее пишем:
+```
+ip tables -A POSTROUTING -t nat -j MASQUER
+```
+Создаем файл для автом. запуска NAT после перезагрузки устройства:
+```
+nano /etc/network/if-pre-up.d/nat
+```
+Пишем в файл: 
+```
+#!/bin/sh
+/sbin/iptables -A POSTROUTING -t nat -j
+MASQUERADE
+```
+Задаем права для файла:
+```
+chmod +x /etc/network/if-pre
+
+
+
 ## Задание 1.2
 
 1.2 Настройте внутреннюю динамическую маршрутизацию по средствам FRR. Выберите и обоснуйте выбор протокола динамической маршрутизации из расчёта, что в дальнейшем сеть будет масштабироваться.
@@ -98,7 +136,7 @@ conf t
 
 router ospf 
 
-net ///.///.///.///.__ area 0
+net .///.///.///.__ area 0
 
 net ___.___.___.___/__ area 0
 
