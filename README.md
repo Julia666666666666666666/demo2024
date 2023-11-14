@@ -83,7 +83,7 @@ sysctl -p
 ```
 Далее пишем:
 ```
-ip tables -A POSTROUTING -t nat -j MASQUER
+iptables -A POSTROUTING -t nat -j MASQUER
 ```
 Создаем файл для автом. запуска NAT после перезагрузки устройства:
 ```
@@ -136,9 +136,9 @@ conf t
 
 router ospf 
 
-net .///.///.///.__ area 0
+net  192.168.0.166/30 area 0
 
-net ___.___.___.___/__ area 0
+net 192.168.0.162/30 area 0
 
 sh ip ospf neighbor
 ```
