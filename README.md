@@ -151,5 +151,36 @@ HQ-SRV c BR-SRV
 BR-SRV c HQ-SRV
 ```
 ### Задание 1.3
+Настроить автом. распределение IP-адресов на HQ-R. У сервера должен быть зарезервирован адрес.
+## Выполнение задания
 
+Скачиваем dhcp:
+```
+apt install isc-dhcp-server
+```
+Далее переходим в режим конфигурации:
+```
+nano /etc/default/isc-dhcp-server
+```
+Нужно указать интерф. сети, куда будут идти IP-адреса
+```
+INTERFACESV4="ens224"
+```
+Теперь нужно настроить раздачу адресов:
+```
+nano /etc/dhcp/dhcpd.conf
+```
+Пишем:
+```
+subnet 192.168.0.0 netmask 255.255.255.128{
+range 192.168.0.4 192.168.0.125;
+option routers 192.168.0.2;}
+```
+Теперь нужно перезагрузить и вкл. dhcp:
+```
+systemctl restart isc-dhcp-server
+
+system enable isc-dhcp-server
+```
+Настройка на HQ-SRV
 
