@@ -83,7 +83,7 @@ sysctl -p
 ```
 Далее пишем:
 ```
-iptables -A POSTROUTING -t nat -j MASQUER
+iptables -A POSTROUTING -t nat -j MASQUERADE
 ```
 Создаем файл для автом. запуска NAT после перезагрузки устройства:
 ```
