@@ -67,7 +67,7 @@ ip a.
 
 На устройстве  ISP:
 ```
-apt install ip iptables
+apt install  iptables
 ```
 Далее заходим в конф.файл:
 ```
