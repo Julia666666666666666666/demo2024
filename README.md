@@ -92,8 +92,7 @@ nano /etc/network/if-pre-up.d/nat
 Пишем в файл: 
 ```
 #!/bin/sh
-/sbin/iptables -A POSTROUTING -t nat -j
-MASQUERADE
+/sbin/iptables -A POSTROUTING -t nat -j MASQUERADE
 ```
 Задаем права для файла:
 ```
