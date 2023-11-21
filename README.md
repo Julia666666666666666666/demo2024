@@ -273,4 +273,40 @@ iprf3 -c 192.168.0.129 -p 5022
 
 ## Выполнение задания
 
-
+На устройстве HQ-R устанавл. rsync:
+```
+apt install rsync -y
+```
+Созд. каталог для хран. бэкапов
+```
+mkdir /etc/networkbackup
+```
+Заходим в раздел в crontab (для выпол. задач по расписанию)
+```
+crontab -e
+```
+Нужно выбрать текст. редактор nano, пишем туда
+```
+0 0 * * * rsync -avzh /etc/frr/frr.conf /etc/networkbackup
+```
+Для того чтобы узнать точное время
+```
+date
+```
+Итог
+```
+41 6 * * * rsync -avzh /etc/frr/frr.conf /etc/networkbackup
+```
+Проверка скрипта, через каталог
+```
+cd /etc/networkbackup
+```
+Пишем там
+```
+ls -a
+```
+Итог
+```
+.  ..  frr.conf
+```
+Повтор. раб. на BR-R
