@@ -142,7 +142,7 @@ net  192.168.0.166/30 area 0
 
 net 192.168.0.162/30 area 0
 
-sh ip ospf neighbor
+do sh ip ospf neighbor
 ```
 После настраиваем  FRR на HQ-R & BR-R
 
