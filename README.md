@@ -143,6 +143,8 @@ net  192.168.0.166/30 area 0
 net 192.168.0.162/30 area 0
 
 do sh ip ospf neighbor
+
+do wr
 ```
 После настраиваем  FRR на HQ-R-1 & BR-R-2
 ```
@@ -176,7 +178,7 @@ nano /etc/default/isc-dhcp-server
 ```
 Нужно указать интерф. сети, куда будут идти IP-адреса
 ```
-INTERFACESV4="ens224"
+INTERFACESV4="ens192"
 ```
 Теперь нужно настроить раздачу адресов:
 ```
@@ -186,7 +188,7 @@ nano /etc/dhcp/dhcpd.conf
 ```
 subnet 192.168.0.0 netmask 255.255.255.128{
 range 192.168.0.4 192.168.0.125;
-option routers 192.168.0.2;}
+option routers 192.168.0.1;}
 ```
 Теперь нужно перезагрузить и вкл. dhcp:
 ```
@@ -212,7 +214,11 @@ systemctl restart networking
 ```
 ip a
 ```
-Результат: ---------
+Результат
+
+![image](https://github.com/Julia666666666666666666/demo2024/assets/148867585/e75d1af0-ffd8-4c34-a3e6-ea4782740c3a)
+
+
 
 ### Задание 1.4
 
