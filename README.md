@@ -242,7 +242,8 @@ nano /etc/passwd
 ```
 Результат
 
----
+![image](https://github.com/Julia666666666666666666/demo2024/assets/148867585/c1a8b292-9169-4e30-a2ef-94e5fa37c9c9)
+
 
 Повторяем все на остальных машинах.
 
@@ -257,7 +258,11 @@ nano /etc/passwd
 Устанавливаем утилиты iperf 3 (SRV-1-2)
 
 ```
-apt-install iperf3
+apt install iperf3
+```
+Если не устанавл.
+```
+sudo dpkg --configure -a
 ```
 После на сервере BR-SRV 
 ```
@@ -269,15 +274,17 @@ iperf3 -s -p 5022
 ```
 На HQ-SRV пишем адрес прим. сервера и его порт
 ```
-iprf3 -c 192.168.0.129 -p 5022
+iprf3 -c 192.168.0.130 -p 5022
 ```
 На BR-SRV выйдет результат
 
------
+![image](https://github.com/Julia666666666666666666/demo2024/assets/148867585/5380ade7-358e-491a-b33d-666b6da564f3)
+
 
 На HQ-SRV
 
-----
+![image](https://github.com/Julia666666666666666666/demo2024/assets/148867585/91f189ae-3794-4cf0-97fb-aedcb5ac917f)
+
 
 ### Задание 1.6
 
