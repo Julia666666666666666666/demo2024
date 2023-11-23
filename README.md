@@ -182,7 +182,7 @@ INTERFACESV4="ens224"
 ```
 nano /etc/dhcp/dhcpd.conf
 ```
-Пишем:
+Стираем все и пишем:
 ```
 subnet 192.168.0.0 netmask 255.255.255.128{
 range 192.168.0.4 192.168.0.125;
